@@ -1,6 +1,7 @@
  <% if user_signed_in? %>
+    <div class="same">
         <h1>Users Info</h1>
-            <%= current_user.profile_image_id %>
+            <%= attachment_image_tag current_user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
             <%= current_user.name %>
             <%= current_user.introduction %>
             <%= link_to "編集", edit_user_path(current_user) %>
@@ -12,5 +13,12 @@
                 <%= f.text_area :body %>
                 <%= f.submit "Create Book" %>
             <% end %>
-            
+    </div>
+    <%= @books.each do |f| %>
+        <%= f.title %>
+        <%= f.body %>
     <% end %>
+<% end %>
+
+
+

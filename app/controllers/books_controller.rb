@@ -1,8 +1,7 @@
 class BooksController < ApplicationController
-    
-    def new
+   def show
     @book = Book.new
-    end
+   end
   
   def create
     @book = Book.new(book_params)
@@ -10,14 +9,17 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to user_path(current_user)
     else
-      render :new
+      render :show
     end
   end
   
-   private
-  def post_image_params
-    params.require(:book).permit(:title, :body)
+  def index
+    @books = Book.all
   end
   
+   private
+    def book_params
+      params.require(:book).permit(:title, :body)
+    end
+  
 end
-
