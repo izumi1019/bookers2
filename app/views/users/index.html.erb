@@ -14,7 +14,9 @@
             <%= attachment_image_tag current_user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
             <%= current_user.name %>
             <%= current_user.introduction %>
+            <% if current_user %>
             <%= link_to "編集", edit_user_path(current_user) %>
+            <% end %>
         <h1>New Book</h1>
             <%= form_with model: @book, local:true do |f| %>
                 <label>title</label>
@@ -24,9 +26,27 @@
                 <%= f.submit "Create Book" %>
             <% end %>
     </div>
-<% @users.each do |f| %>
-<%= attachment_image_tag f , :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
-  <%= f.name %>
-  <%= link_to "Show", user_path(f.id) %>
-<% end %>
+<table>
+<tr>
+    <th>image</th>
+    <th>name</th>
+    <th></th>
+</tr>
+ <% @users.each do |f| %>
+<tr>
+    <td><%= attachment_image_tag f , :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></td>
+    <td><%= f.name %></td>
+    <td><%= link_to "Show", user_path(f.id) %></td>
+</tr>
+ <% end %>
+</table>
+
+
+
+
+
+
+
+
+
 
