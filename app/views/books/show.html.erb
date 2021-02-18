@@ -1,0 +1,21 @@
+
+    <%= attachment_image_tag @book_detail.user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= link_to @book_detail.user.name, user_path(@book_detail.user) %>
+    <%= link_to @book_detail.title, book_path(@book_detail) %>
+    <%= @book_detail.body %>
+    <%= link_to "Edit", edit_book_path(@book_detail.id) %>
+    <%= link_to "Destroy", book_path(@book_detail.id),  method: :delete %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,10 +1,21 @@
  <% if user_signed_in? %>
-    <div class="same">
+ <p><%= flash[:notice] %></p>
+         <% if @book.errors.any? %>
+            <h3><%= @book.errors.count %> error prohibited this book from being saved:</h3>
+             <div id="error_explanation" class="alert alert-danger">
+            <ul>
+              <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+        <% end %>
+           </ul>
+          </div>
+        <% end %>
+        <div class="same">
         <h1>Users Info</h1>
-            <%= attachment_image_tag current_user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
-            <%= current_user.name %>
-            <%= current_user.introduction %>
-            <%= link_to "編集", edit_user_path(current_user) %>
+            <%= attachment_image_tag @user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
+            <%= @user.name %>
+            <%= @user.introduction %>
+            <%= link_to "編集", edit_user_path(@user) %>
         <h1>New Book</h1>
             <%= form_with model: @book, local:true do |f| %>
                 <label>title</label>
@@ -14,11 +25,19 @@
                 <%= f.submit "Create Book" %>
             <% end %>
     </div>
-    <%= @books.each do |f| %>
-        <%= f.title %>
+    <h1>Books</h1>
+    <% @books.each do |f| %>
+    <%= attachment_image_tag f.user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
+       <%= link_to f.title, book_path(f.id) %>
         <%= f.body %>
     <% end %>
 <% end %>
+
+
+
+
+
+
 
 
 
