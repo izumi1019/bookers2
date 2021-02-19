@@ -14,9 +14,10 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id), notice: "Book was successfully created."
     else
       @user = current_user
-      @books = Book.where(user: current_user)
-      render "/books/show"
-      @book = Book.new(book_params)
+      @books = Book.all
+      @book.title = nil
+      render "books/index"
+       @book = Book.new
     end
   end
   
@@ -31,7 +32,7 @@ class BooksController < ApplicationController
     if @book.user == current_user
         render "edit"
     else
-       redirect_to user_path(current_user)
+       redirect_to books_path
     end
   end
   
@@ -59,6 +60,18 @@ class BooksController < ApplicationController
     end
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -40,7 +40,9 @@
             </tr>
         <% @books.each do |f| %>
             <tr>
-                <td><%= attachment_image_tag f.user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></td>
+                <td><%= link_to user_path(f.user.id), method: :get do %>
+                  <%= attachment_image_tag f.user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
+                  <% end %></td>
                 <td><%= link_to f.title, book_path(f.id) %></td>
                 <td><%= f.body %></td>
             </tr>
@@ -48,8 +50,13 @@
         </table>
         </div>
         </div>  
-    </div>  
+    </div>
+    
 <% end %>
+
+
+
+
 
 
 
