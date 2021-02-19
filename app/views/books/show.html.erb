@@ -7,16 +7,18 @@
             <%= @user.name %>
             <%= @user.introduction %>
                 <%= link_to edit_user_path(@user), method: :get do %>
-                <i class="fas fa-user-cog "></i>
+                    <i class="fas fa-user-cog "></i>
                 <% end %>
         <h1>New book</h1>
-            <%= form_with model: @book, local:true do |f| %>
-                <label>title</label>
-                <%= f.text_field :title %>
-                <label>opinion</label>
-                <%= f.text_area :body %>
-                <%= f.submit "Create Book" %>
-            <% end %>
+            <div class="book-form">
+                <%= form_with model: @book, local:true, class:"book-form" do |f| %>
+                    <label>title</label>
+                    <%= f.text_field :title %>
+                    <label>opinion</label>
+                    <%= f.text_area :body %>
+                    <%= f.submit "Create Book" %>
+                <% end %>
+            </div>
         </div>
         <div class="col-md-8 offset-md-1"> 
            
@@ -36,8 +38,8 @@
                 </tr>
             </table>
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
    
     
     

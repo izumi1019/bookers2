@@ -10,24 +10,26 @@
            </ul>
           </div>
         <% end %>
-       <div class="container">  
-      <div class="row">   
+<div class="container">  
+    <div class="row">   
         <div class="col-md-3"> 
-        <h1>Users Info</h1>
-            <%= attachment_image_tag @user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
-            <%= @user.name %>
-            <%= @user.introduction %>
-            <%= link_to edit_user_path(@user), method: :get do %>
-            <i class="fas fa-user-cog edit_user_20621"></i>
-            <% end %>
-        <h1>New book</h1>
-            <%= form_with model: @book, local:true do |f| %>
-                <label>title</label>
-                <%= f.text_field :title %>
-                <label>opinion</label>
-                <%= f.text_area :body %>
-                <%= f.submit "Create Book" %>
-            <% end %>
+            <h1>Users Info</h1>
+                <%= attachment_image_tag @user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %>
+                <%= @user.name %>
+                <%= @user.introduction %>
+                <%= link_to edit_user_path(@user), method: :get do %>
+                    <i class="fas fa-user-cog edit_user_20621"></i>
+                <% end %>
+            <h1>New book</h1>
+                <div class="book-form">
+                    <%= form_with model: @book, local:true, class:"book-form" do |f| %>
+                        <label>title</label>
+                        <%= f.text_field :title %>
+                        <label>opinion</label>
+                        <%= f.text_area :body %>
+                        <%= f.submit "Create Book" %>
+                    <% end %>
+               </div>
         </div>
         <div class="col-md-8 offset-md-1"> 
             <table class="table">
@@ -48,8 +50,8 @@
                 <% end %>
             </table>
         </div>
-        </div>
-        </div>
+    </div>
+</div>
         
         
         

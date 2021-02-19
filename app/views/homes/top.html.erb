@@ -1,11 +1,9 @@
  <p><%= flash[:notice] %></p>
- <h1>Welcome to <i class="fas fa-book"></i>Bookers!!</h1>
- <h4>In <i class="fas fa-book"></i>Bookers,<br>
-
-you can share and exchange your opinions , inpressions , and emotions<br>
-
-about various books!</h4>
-
-<%= link_to "Log in", new_user_session_path %>
- <%= link_to "Sign up", new_user_registration_path %>
- 
+ <div class="top">
+   <h1>Welcome to <i class="fas fa-book"></i>Bookers!!</h1>
+   <h4>In <i class="fas fa-book"></i>Bookers,<br>
+   you can share and exchange your opinions , inpressions , and emotions<br>
+   about various books!</h4>
+  <%= link_to "Log in", new_user_session_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
+ </div>
